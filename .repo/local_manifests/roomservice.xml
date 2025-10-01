@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="github" fetch="https://github.com/" />
+
+  <!-- Cannon common device tree -->
+  <project name="kenymccornick/android_device_xiaomi_cannon"
+           path="device/xiaomi/cannon"
+           remote="github"
+           revision="lineage-20.0" />
+
+  <!-- Cannon common vendor tree -->
+  <project name="kenymccornick/android_vendor_xiaomi_cannon"
+           path="vendor/xiaomi/cannon"
+           remote="github"
+           revision="lineage-20.0" />
+
+  <!-- Cannon common kernel tree -->
+  <project name="kenymccornick/android_kernel_xiaomi_cannon"
+           path="kernel/xiaomi/cannon"
+           remote="github"
+           revision="lineage-20.0" />
+</manifest>
