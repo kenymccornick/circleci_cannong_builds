@@ -27,6 +27,10 @@ jobs:
             curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
             chmod a+x ~/bin/repo
             echo 'export PATH=~/bin:$PATH' >> $BASH_ENV
+
+            # configure git identity for repo
+            git config --global user.email "ci-bot@example.com"
+            git config --global user.name "CircleCI Bot"
       - restore_cache:
           keys:
             - ccache-{{ .Branch }}
