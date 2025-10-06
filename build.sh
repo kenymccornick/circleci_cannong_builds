@@ -16,13 +16,16 @@ echo ">>> Building LineageOS $LINEAGE_BRANCH for cannong"
 echo ">>> Build target: $BUILD_TARGET"
 echo ">>> Ccache size: $CCACHE_SIZE"
 
-# === Initialize repo if not already ===
-if [ ! -d ".repo" ]; then
-  repo init -u https://github.com/LineageOS/android.git -b $LINEAGE_BRANCH --git-lfs
-fi
+# === Initialize and sync repo ===
+echo ">>> Initializing repo..."
+rm -rf .repo
+which repo
+repo init -u https://github.com/LineageOS/android.git -b $LINEAGE_BRANCH --git-lfs
+ls -la .repo/manifests || echo "manifest missing"
 
-# === Sync sources ===
-repo sync -c --no-tags --no-clone-bundle -j$(nproc) || repo sync -c --no-tags --no-clone-bundle -j1
+echo ">>> Syncing sources..."
+repo sync -c --no-tags --no-clone-bundle -j$(nproc) || \
+repo sync -c --no-tags --no-clone-bundle -j1
 
 # === Build ===
 source build/envsetup.sh
