@@ -3,7 +3,7 @@ version: 2.1
 executors:
   lineage-docker:
     docker:
-      - image: cimg/ubuntu:22.04
+      - image: cimg/base:current
     resource_class: large
 
 jobs:
