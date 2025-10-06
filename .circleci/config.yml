@@ -19,8 +19,14 @@ jobs:
               openjdk-17-jdk git git-lfs curl wget bc bison build-essential \
               ccache flex gperf libncurses5-dev libssl-dev libxml2-utils \
               lzop python3 rsync unzip zip zlib1g-dev liblz4-tool aria2 \
-              gnupg file repo
+              gnupg file
             git lfs install
+
+            # install the official Android repo tool
+            mkdir -p ~/bin
+            curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+            chmod a+x ~/bin/repo
+            echo 'export PATH=~/bin:$PATH' >> $BASH_ENV
       - restore_cache:
           keys:
             - ccache-{{ .Branch }}
